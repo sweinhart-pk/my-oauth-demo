@@ -1,0 +1,35 @@
+server:
+    port: 8080
+    tomcat:
+      accesslog:
+        enabled: true
+    servlet:
+      context-path: /
+      session:
+        cookie:
+          name: UISESSION
+
+spring:
+  thymeleaf:
+    cache: false    
+  security:
+    oauth2:
+      client:
+        registration:
+          custom:
+            client-id: myCodeClient
+            client-secret: secret
+            scope: read,write,foo
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/custom
+        provider: 
+          custom:
+            authorization-uri: http://localhost:8081/spring-security-oauth-server/oauth/authorize
+            token-uri: http://localhost:8081/spring-security-oauth-server/oauth/token
+            user-info-uri: http://localhost:8082/spring-security-oauth-resource/users/extra
+            user-name-attribute: user_name
+            
+logging: 
+  level:
+    org.org.springframework: INFO 
+    

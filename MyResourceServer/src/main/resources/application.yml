@@ -1,0 +1,10 @@
+server: 
+  servlet:
+    context-path: /spring-security-oauth-resource
+  port: 8082
+
+logging:
+  level:
+    org: INFO
+    
+#endpoints.cors.allowed-origins=*
